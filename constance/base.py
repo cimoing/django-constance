@@ -16,10 +16,15 @@ class Config(object):
             default = settings.CONFIG[key][0]
         except KeyError:
             raise AttributeError(key)
+
+        if not settings.ENABLED:
+            return default
+
         result = self._backend.get(key)
         if result is None:
             result = default
-            setattr(self, key, default)
+            # Do not set default value to db/redis when there is no result.
+            # setattr(self, key, default)
             return result
         return result
 

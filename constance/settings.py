@@ -43,3 +43,5 @@ IGNORE_ADMIN_VERSION_CHECK = getattr(
     'CONSTANCE_IGNORE_ADMIN_VERSION_CHECK',
     False
 )
+
+ENABLED = getattr(settings, 'CONSTANCE_ENABLED', True)
